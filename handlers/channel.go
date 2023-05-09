@@ -15,6 +15,7 @@ import (
 
 	"github.com/cloudinary/cloudinary-go"
 	"github.com/cloudinary/cloudinary-go/api/uploader"
+
 	// "github.com/go-playground/validator/v10"
 	"github.com/golang-jwt/jwt/v4"
 	"github.com/labstack/echo/v4"
@@ -36,13 +37,13 @@ func (h *handlerChannel) FindChannels(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, dto.ErrorResult{Code: http.StatusInternalServerError, Message: err.Error()})
 	}
 
-	for i, p := range channels {
-		channels[i].Cover = os.Getenv("PATH_FILE") + p.Cover
-	}
+	// for i, p := range channels {
+	// 	channels[i].Cover = os.Getenv("PATH_FILE") + p.Cover
+	// }
 
-	for i, p := range channels {
-		channels[i].Photo = os.Getenv("PATH_FILE") + p.Photo
-	}
+	// for i, p := range channels {
+	// 	channels[i].Photo = os.Getenv("PATH_FILE") + p.Photo
+	// }
 
 	return c.JSON(http.StatusOK, dto.SuccessResult{Code: http.StatusOK, Data: channels})
 
